@@ -5,6 +5,7 @@ composer.phar
 Thumbs.db
 .phpintel
 .env.*.php
+.idea
 
 /app/config/ht2
 /app/config/production
