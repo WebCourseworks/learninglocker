@@ -1,5 +1,6 @@
 <?php namespace Locker\Repository\Statement;
 
+use Illuminate\Support\Facades\Event;
 use \Locker\Helpers\Helpers as Helpers;
 use \Locker\XApi\Statement as XAPIStatement;
 use \Locker\Helpers\Exceptions as Exceptions;
@@ -41,6 +42,10 @@ class EloquentStorer extends EloquentReader implements Storer {
     $this->voider->voidStatements($statements, $opts);
     $this->attacher->store($attachments, $this->hashes, $opts);
     $this->activateStatements($ids, $opts);
+
+    foreach ($statements as $statement) {
+      Event::fire('Statement.store', (object)array('statement' => $statement, 'opts' => $opts));
+    }
 
     return $ids;
   }

@@ -31,3 +31,6 @@ Event::listen('Lrs.destroy', function ($opts) {
     $repo->destroy($client->_id, ['lrs_id' => $opts['id']]);
   }
 });
+
+// Dispatch a statement to SQS if configured.
+Event::listen('Statement.store', 'app\locker\listeners\StatementQueueHandler');

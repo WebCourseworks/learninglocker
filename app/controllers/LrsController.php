@@ -69,6 +69,9 @@ class LrsController extends BaseController {
     //lrs input validation
     $rules['title']        = 'required';
     $rules['description']  = '';
+    $rules['awsaccesskey'] = '';
+    $rules['awssecretkey'] = '';
+    $rules['awssqsarn']    = '';
     $validator = \Validator::make($data, $rules);
     if ($validator->fails()) return \Redirect::back()->withErrors($validator);
 

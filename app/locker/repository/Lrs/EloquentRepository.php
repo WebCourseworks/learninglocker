@@ -12,7 +12,10 @@ class EloquentRepository extends BaseRepository implements Repository {
   protected $model = '\Lrs';
   protected $defaults = [
     'title' => 'New LRS',
-    'description' => ''
+    'description' => '',
+    'awsaccesskey' => '',
+    'awssecretkey' => '',
+    'awssqsarn' => '',
   ];
 
   /**
@@ -32,6 +35,9 @@ class EloquentRepository extends BaseRepository implements Repository {
   protected function validateData(array $data) {
     if (isset($data['title'])) XAPIHelpers::checkType('title', 'string', $data['title']);
     if (isset($data['description'])) XAPIHelpers::checkType('description', 'string', $data['description']);
+    if (isset($data['awsaccesskey'])) XAPIHelpers::checkType('awsaccesskey', 'string', $data['awsaccesskey']);
+    if (isset($data['awssecretkey'])) XAPIHelpers::checkType('awssecretkey', 'string', $data['awssecretkey']);
+    if (isset($data['awssqsarn'])) XAPIHelpers::checkType('awssqsarn', 'string', $data['awssqsarn']);
     if (isset($data['owner_id'])) XAPIHelpers::checkType('owner_id', 'MongoId', $data['owner_id']);
 
     // Validate users.
@@ -70,6 +76,9 @@ class EloquentRepository extends BaseRepository implements Repository {
     // Sets properties on model.
     $model->title = $data['title'];
     $model->description = $data['description'];
+    $model->awsaccesskey = $data['awsaccesskey'];
+    $model->awssecretkey = $data['awssecretkey'];
+    $model->awssqsarn = $data['awssqsarn'];
     $model->owner_id = $data['owner_id'];
     $model->users = $data['users'];
 
@@ -89,6 +98,9 @@ class EloquentRepository extends BaseRepository implements Repository {
     // Sets properties on model.
     if (isset($data['title'])) $model->title = $data['title'];
     if (isset($data['description'])) $model->description = $data['description'];
+    if (isset($data['awsaccesskey'])) $model->awsaccesskey = $data['awsaccesskey'];
+    if (isset($data['awssecretkey'])) $model->awssecretkey = $data['awssecretkey'];
+    if (isset($data['awssqsarn'])) $model->awssqsarn = $data['awssqsarn'];
 
     return $model;
   }
