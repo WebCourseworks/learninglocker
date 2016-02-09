@@ -85,5 +85,9 @@ return array(
     'roleChange' => 'Role successfully changed',
     'hello' => 'hello',
     'saved' => 'Saved successfully',
-    'notSaved' => 'Could not save.'
+    'notSaved' => 'Could not save.',
+
+	'awsaccesskey' => 'Access key',
+	'awssecretkey' => 'Secret',
+	'awssqsarn' => 'SQS ARN',
 );
