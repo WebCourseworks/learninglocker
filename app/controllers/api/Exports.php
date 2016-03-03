@@ -23,10 +23,14 @@ class Exports extends Resources {
    * @return StreamedResponse.
    */
   public function showJson($id) {
+    // should top timeouts on long queries
+    set_time_limit(0);
+
     $opts = $this->getOptions();
     $model = $this->repo->show($id, $opts);
 
     return IlluminateResponse::stream(function () use ($model, $opts) {
+      if (ob_get_level() == 0) ob_start();
       echo '[';
       $this->repo->export($model, array_merge($opts, [
         'next' => function () {
@@ -46,10 +50,14 @@ class Exports extends Resources {
    * @return StreamedResponse.
    */
   public function showCsv($id) {
+    // should top timeouts on long queries
+    set_time_limit(0);
+
     $opts = $this->getOptions();
     $model = $this->repo->show($id, $opts);
 
     return IlluminateResponse::stream(function () use ($model, $opts) {
+      if (ob_get_level() == 0) ob_start();
       // Outputs the field names (column headers).
       echo implode(',', array_map(function ($field) {
         return $field['to'];
