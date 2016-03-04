@@ -18,21 +18,21 @@
   <div class="form-group">
     {{ Form::label('awsaccesskey', Lang::get('site.awsaccesskey'), array('class' => 'col-sm-2 control-label' )) }}
     <div class="col-sm-10">
-      {{ Form::text('awsaccesskey', $lrs->awsaccesskey,array('class' => 'form-control')) }}
+      {{ Form::text('awsaccesskey', '',array('class' => 'form-control')) }}
     </div>
   </div>
 
   <div class="form-group">
     {{ Form::label('awssecretkey', Lang::get('site.awssecretkey'), array('class' => 'col-sm-2 control-label' )) }}
     <div class="col-sm-10">
-      {{ Form::text('awssecretkey', $lrs->awssecretkey,array('class' => 'form-control')) }}
+      {{ Form::text('awssecretkey', '',array('class' => 'form-control')) }}
     </div>
   </div>
 
   <div class="form-group">
     {{ Form::label('awssqsarn', Lang::get('site.awssqsarn'), array('class' => 'col-sm-2 control-label' )) }}
     <div class="col-sm-10">
-      {{ Form::text('awssqsarn', $lrs->awssqsarn,array('class' => 'form-control')) }}
+      {{ Form::text('awssqsarn', '',array('class' => 'form-control')) }}
     </div>
   </div>
   <hr>
