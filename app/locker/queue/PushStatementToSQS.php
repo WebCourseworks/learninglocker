@@ -10,8 +10,10 @@ class PushStatementToSQS {
 
         if (!$lrs) {
             $job->delete();
+            return;
         } else if (empty($lrs->awsaccesskey) || empty($lrs->awssecretkey) || empty($lrs->awssqsarn)) {
             $job->delete();
+            return;
         }
 
         try {
